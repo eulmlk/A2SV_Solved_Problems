@@ -5,10 +5,17 @@ using namespace std;
 class NumArray {
 public:
     NumArray(vector<int> &nums) {
-        size = nums.size();
+        size = nums.size() + 1;
         numbs = new int[size];
+        int sum = 0;
+        numbs[0] = 0;
 
-        memcpy(numbs, &(*nums.begin()), size * sizeof(int));
+        for (int i = 1; i < size; ++i) {
+            sum += nums[i - 1];
+            numbs[i] = sum;
+            cout << numbs[i] << " ";
+        }
+        cout << endl;
     }
 
     ~NumArray() {
@@ -16,13 +23,7 @@ public:
     }
 
     int sumRange(int left, int right) {
-        int sum = 0;
-
-        for (int i = left; i <= right; ++i) {
-            sum += numbs[i];
-        }
-
-        return sum;
+        return numbs[right + 1] - numbs[left];
     }
 
 private:
