@@ -7,11 +7,12 @@ using namespace std;
 class Solution {
 public:
     bool splitString(string s) {
-        return isSplitValid(s, 0, 0, 0);
+        this->s = s;
+        return isSplitValid(0, 0, 0);
     }
 
 private:
-    bool isSplitValid(string s, int start, U64 prev, int count) {
+    bool isSplitValid(int start, U64 prev, int count) {
         int n = s.length();
         if (start == n)
             return count > 1;
@@ -21,13 +22,16 @@ private:
             cur = cur * 10 + (s[i] - '0');
 
             if (prev - cur == 1 || start == 0) {
-                if (isSplitValid(s, i + 1, cur, count + 1))
+                if (isSplitValid(i + 1, cur, count + 1))
                     return true;
             }
         }
 
         return false;
     }
+
+private:
+    string s;
 };
 
 int main() {
