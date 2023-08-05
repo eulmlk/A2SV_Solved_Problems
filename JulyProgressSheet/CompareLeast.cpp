@@ -50,7 +50,7 @@ private:
 void printVector(vector<int> &&v) {
     cout << "[ ";
     for (auto val : v) {
-        cout << val << "  ";
+        cout << val << " ";
     }
     cout << "]\n";
 }
