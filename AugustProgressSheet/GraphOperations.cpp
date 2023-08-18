@@ -5,19 +5,15 @@
 using namespace std;
 
 void addEdge(vector<list<int>> &adjacency, int u, int v) {
-    adjacency[u].insert(lower_bound(adjacency[u].begin(), adjacency[u].end(), v), v);
-    adjacency[v].insert(lower_bound(adjacency[v].begin(), adjacency[v].end(), u), u);
+    adjacency[u].push_back(v);
+    adjacency[v].push_back(u);
 }
 
 void printGraph(const vector<list<int>> &adjacency, int v) {
-    bool printed = false;
-    for (int i : adjacency[v]) {
-        printed = true;
+    for (int i : adjacency[v])
         cout << i + 1 << ' ';
-    }
 
-    if (printed)
-        cout << '\n';
+    cout << '\n';
 }
 
 int main() {
