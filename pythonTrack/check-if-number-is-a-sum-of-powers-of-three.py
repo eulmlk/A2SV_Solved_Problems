@@ -1,8 +1,15 @@
 class Solution:
     def checkPowersOfThree(self, n: int) -> bool:
-        while n > 0:
-            if n % 3 == 2:
-                return False
-            n //= 3
+        nums = [1] * 17
+
+        for i in range(1, 17):
+            nums[i] = nums[i - 1] * 3
         
-        return True
+        for i in range(16, -1, -1):
+            if n == nums[i]:
+                return True
+            
+            if n > nums[i]:
+                n -= nums[i]
+        
+        return n == 0
