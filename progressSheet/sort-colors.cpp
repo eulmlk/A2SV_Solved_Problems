@@ -6,14 +6,14 @@ public:
         for (int val : nums)
             ++counts[val];
 
-        nums.clear();
+        int ind = 0;
         while (counts[0]--)
-            nums.push_back(0);
+            nums[ind++] = 0;
 
         while (counts[1]--)
-            nums.push_back(1);
+            nums[ind++] = 1;
 
         while (counts[2]--)
-            nums.push_back(2);
+            nums[ind++] = 2;
     }
 };
