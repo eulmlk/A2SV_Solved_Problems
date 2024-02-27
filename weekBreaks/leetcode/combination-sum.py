@@ -1,7 +1,4 @@
 class Solution:
-    def __init__(self):
-        sys.setrecursionlimit(2 ** 31 - 1)
-    
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         result = []
         cur = []
