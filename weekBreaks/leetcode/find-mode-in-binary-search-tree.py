@@ -6,24 +6,32 @@
 #         self.right = right
 class Solution:
     def findMode(self, root: Optional[TreeNode]) -> List[int]:
-        vals = []
+        result = []
+        prev = None
+        maxStreak, curStreak = -1, 0
 
         def traverse(node):
+            nonlocal result, prev, maxStreak, curStreak
             if not node:
                 return
             
             traverse(node.left)
-            vals.append(node.val)
+
+            if prev and node.val == prev.val:
+                curStreak += 1
+            else:
+                curStreak = 0
+            
+            if curStreak > maxStreak:
+                result = [node.val]
+                maxStreak = curStreak
+            elif curStreak == maxStreak:
+                result.append(node.val)
+                
+            prev = node
+            print(result)
+        
             traverse(node.right)
-        
+
         traverse(root)
-
-        counts = Counter(vals)
-        maxCount = max(counts.values())
-
-        result = []
-        for num, count in counts.items():
-            if count == maxCount:
-                result.append(num)
-        
         return result
