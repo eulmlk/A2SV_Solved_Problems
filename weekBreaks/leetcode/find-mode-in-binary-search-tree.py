@@ -29,7 +29,6 @@ class Solution:
                 result.append(node.val)
                 
             prev = node
-            print(result)
         
             traverse(node.right)
 
