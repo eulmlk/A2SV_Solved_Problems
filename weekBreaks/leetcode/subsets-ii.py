@@ -2,6 +2,7 @@ class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
         result = []
         cur = []
+        nums.sort()
         n = len(nums)
 
         def subs(i):
@@ -12,9 +13,11 @@ class Solution:
             cur.append(nums[i])
             subs(i + 1)
             cur.pop()
+
+            while i < n - 1 and nums[i] == nums[i + 1]:
+                i += 1
+            
             subs(i + 1)
         
         subs(0)
-        result = set(map(lambda x: tuple(sorted(x)), result))
-        result = list(map(lambda x: list(x), result))
         return result
