@@ -17,9 +17,7 @@ class Solution:
             queue.append(i)
 
             while queue and nums[queue[-1]] - nums[queue[0]] >= k:
-                curSum = nums[queue[-1]] - nums[queue[0]]
                 curLen = queue[-1] - queue[0]
-
                 minLen = min(minLen, curLen)
                 queue.popleft()
             
