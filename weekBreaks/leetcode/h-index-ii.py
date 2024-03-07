@@ -5,7 +5,7 @@ class Solution:
             i = bisect_left(citations, h)
             return n - i >= h
         
-        left, right = 1, citations[-1]
+        left, right = 1, n
         while left <= right:
             mid = (left + right) // 2
 
